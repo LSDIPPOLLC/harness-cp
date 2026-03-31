@@ -1,4 +1,4 @@
-# HarnessCP
+# Harness CP
 
 Configuration-as-code framework for VS Code Copilot with Anthropic Claude. Brings the discipline of [harness engineering](https://github.com/harness-eng-skills) to the Copilot ecosystem.
 
