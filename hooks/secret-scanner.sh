@@ -24,7 +24,7 @@ echo "$CONTENT" | grep -qE 'AKIA[0-9A-Z]{16}' && FOUND="$FOUND AWS access key,"
 echo "$CONTENT" | grep -qE 'sk-[a-zA-Z0-9]{20,}' && FOUND="$FOUND API key (sk-*),"
 
 # Private keys
-echo "$CONTENT" | grep -qE '-----BEGIN.*PRIVATE KEY-----' && FOUND="$FOUND private key,"
+echo "$CONTENT" | grep -qE -- '-----BEGIN.*PRIVATE KEY-----' && FOUND="$FOUND private key,"
 
 # Hardcoded passwords (common patterns)
 echo "$CONTENT" | grep -qE 'password\s*[:=]\s*["\x27][^"\x27]{8,}' && FOUND="$FOUND hardcoded password,"
