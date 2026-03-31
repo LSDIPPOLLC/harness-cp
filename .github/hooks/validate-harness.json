@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "./hooks/harness-validate.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

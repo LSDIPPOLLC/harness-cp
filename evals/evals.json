@@ -1,0 +1,53 @@
+{
+  "evals": [
+    {
+      "name": "bootstrap-react-project",
+      "description": "Generate a tailored Copilot harness for a React/TypeScript/Vite project with Jest, Prettier, and Vercel deployment",
+      "prompt": "I just cloned a React project. It uses TypeScript, Vite for bundling, Jest for testing, Prettier for formatting, and deploys to Vercel. Set up Copilot for this project.",
+      "expected_skill": "harnesscp-init",
+      "assertions": [
+        "Creates .github/copilot-instructions.md with stack-specific content (not generic)",
+        "copilot-instructions.md includes build/test/lint commands for npm/vite/jest/prettier",
+        "Creates at least one conditional .instructions.md file (e.g., react.instructions.md with applyTo: '**/*.tsx')",
+        "copilot-instructions.md is under 400 lines",
+        "Creates .github/memory/ directory with MEMORY.md",
+        "Creates at least one hook definition in .github/hooks/",
+        "Creates or references at least one agent in .github/agents/",
+        "Mentions Vercel deployment in instructions or memory"
+      ]
+    },
+    {
+      "name": "diagnose-broken-harness",
+      "description": "Audit a Copilot harness that has bloated instructions, no conditional files, no memory, no agents, and over-permissive hooks",
+      "prompt": "Audit my Copilot setup. My copilot-instructions.md is 800 lines, I have no conditional instruction files, no memory system, no custom agents, and my hooks don't have any PreToolUse gates.",
+      "expected_skill": "harnesscp-audit",
+      "assertions": [
+        "Identifies context engineering problem (instructions >600 lines)",
+        "Flags missing conditional instruction files (progressive disclosure)",
+        "Identifies missing memory system (persistence gap)",
+        "Identifies missing agents (no orchestration/routing)",
+        "Identifies missing PreToolUse hooks (permission/safety gap)",
+        "Uses the 7-pillar framework to structure the assessment",
+        "Produces a maturity score (should be low, 2-5 range)",
+        "Recommends specific improvements in priority order"
+      ]
+    },
+    {
+      "name": "create-python-hooks",
+      "description": "Add a ruff lint hook and a secret scanner hook for a Python project",
+      "prompt": "I have a Python project that uses ruff for linting. Add a PostToolUse hook that runs ruff after every edit, and a PreToolUse hook that blocks writes containing secrets.",
+      "expected_skill": "harnesscp-hooks",
+      "assertions": [
+        "Creates a PostToolUse hook JSON definition in .github/hooks/",
+        "Creates a companion shell script for ruff linting",
+        "Script correctly reads JSON from stdin and extracts tool_name/tool_input",
+        "Script only runs ruff on .py files",
+        "Script exits 0 (doesn't block on lint issues, reports them)",
+        "Creates a PreToolUse hook JSON definition for secret scanning",
+        "Secret scanner script returns permissionDecision: deny when secrets found",
+        "Secret scanner script exits 0 for clean files",
+        "Both scripts are made executable"
+      ]
+    }
+  ]
+}

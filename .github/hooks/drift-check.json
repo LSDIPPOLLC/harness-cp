@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "./hooks/harness-drift.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}
